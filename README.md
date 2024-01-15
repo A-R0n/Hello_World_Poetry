@@ -17,5 +17,6 @@ so you can easily manage and reproduce the project on another machine.
  - 1) Prereq: Download [miniconda](https://docs.conda.io/projects/miniconda/en/latest/) then create your env >>> `conda env create -f environment.yml`
  - 2) Create an account with [Kaggle](https://www.kaggle.com/)
  - 3) Generate a security token [Create New Token](https://www.kaggle.com/settings)
- - 4) Run the following command from your terminal in the root of your project >>> `kaggle competitions download -c dog-breed-identification`
+ - 4) Run the following command from your terminal in the root of your project >>> `kaggle competitions download -c dog-breed-identification`.
+ 
  Congratulations! You now have over 20,000 images of 120 different dogs 🤓
