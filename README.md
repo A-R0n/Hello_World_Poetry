@@ -2,8 +2,7 @@
 
 ## Description
 This is a machine learning project where we build a Convolutional Neural Network (CNN)
-using ~20,000 images of dogs (with their breeds). After we build our model, we can reconstruct it to make predictions with images of dogs we know
-and test its accuracy.
+using ~20,000 images of dogs (with their breeds). After we build our model, we can pass in images of dogs we know and allow it to guess the breed! 
 
 ### What's the Poetry part?
 Poetry is an open source tool python developers use for their really large projects to help resolve versioning conflicts,
