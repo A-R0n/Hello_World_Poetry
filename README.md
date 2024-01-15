@@ -2,7 +2,7 @@
 
 ## Description
 This is a machine learning project where we build a Convolutional Neural Network (CNN)
-using ~20,000 images of dogs (with their breeds) provided by Kaggle. After we build our model, we can reconstruct it to make predictions with images of dogs we know
+using ~20,000 images of dogs (with their breeds). After we build our model, we can reconstruct it to make predictions with images of dogs we know
 and test its accuracy.
 
 ### What's the Poetry part?
