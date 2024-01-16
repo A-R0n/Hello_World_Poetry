@@ -10,7 +10,9 @@ so you can easily manage and reproduce the project on another machine.
 
 ### Why are we using Poetry?
  - Idexx is a company that uses it.
- - In this project, we have many dependencies: keras, tensorflow, opencv-python, sklearn, numpy, pandas, numpy, and matplotlib. And as our project grows, so might the number of these dependencies! We're also using it because the lock file gives us performance gains.
+ - In this project, we have many dependencies: keras, tensorflow, opencv-python, sklearn, numpy, pandas, numpy, and matplotlib. And as our project grows, so might the number of these dependencies!
+ - It gives us performance gains through the use of a lock file.
+ - This tool also allows us to publish our work to PyPI.
 
  ## How we do get our data?
  - 1) Prereq: Download [miniconda](https://docs.conda.io/projects/miniconda/en/latest/) then create your env >>> `conda env create -f environment.yml`
