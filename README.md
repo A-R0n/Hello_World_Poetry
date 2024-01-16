@@ -12,7 +12,9 @@ so you can easily manage and reproduce the project on another machine.
  - Idexx is a company that uses it.
  - In this project, we have many dependencies: keras, tensorflow, opencv-python, sklearn, numpy, pandas, numpy, and matplotlib. And as our project grows, so might the number of these dependencies!
  - It gives us performance gains through the use of a lock file.
- - This tool also allows us to publish our work to PyPI.
+ - When we add/remove libraries from our poetry shell, our config file (project.toml) updates automatically. I.e >>> `poetry add pandas`
+ - We can run multiple environments within the shell. I.e >>> `poetry env list`
+ - It also allows us to publish our work to PyPI. I.e >>> `poetry config repositories.test-pypi https://test.pypi.org/legacy && poetry build && poetry publish --build -r test-pypi`
 
  ## How we do get our data?
  - 1) Prereq: Download [miniconda](https://docs.conda.io/projects/miniconda/en/latest/) then create your env >>> `conda env create -f environment.yml`
