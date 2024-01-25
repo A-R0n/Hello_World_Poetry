@@ -22,6 +22,12 @@ class Main:
         self.imagenet_classes_url = "https://raw.githubusercontent.com/pytorch/hub/master/imagenet_classes.txt"
         self.imagenet_classes_filename = "imagenet_classes.txt"
         self.n = 3
+        self.font = cv2.FONT_HERSHEY_SIMPLEX
+        self.org = (200, 200) 
+        self.fontScale = 3
+        self.bgr_white_color = (255, 255, 255)
+        self.bgr_black_color = (0, 0, 0)
+        self.thickness = 3  
         self._main()
 
     def _guess_dog_breed(self):
@@ -54,6 +60,7 @@ class Main:
             category_name = self.categories[self.topn_catid[i]]
             prob = str(round(float(self.topn_prob[i].item()*100), 1)) + "%"
             print(category_name, prob)
+        self.top_guess = str(self.categories[self.topn_catid[0]]).title()
 
     def _open_and_convert_img_rgb(self):
         return Image.open(self.img_name).convert('RGB')
@@ -104,9 +111,24 @@ class Main:
         return time.time_ns()
     
     def _blur_frame(self):
-        self.kernal_size = (35,35)
+        self.kernal_size = (100,100)
         self.blurred_frame = cv2.blur(self.frame, self.kernal_size)
         cv2.imshow(self.window_name, self.blurred_frame)
+
+    def _put_text_on_blurred_frame(self):
+        return cv2.putText(
+            self.blurred_frame,
+            self.top_guess,
+            self.org, self.font,
+            self.fontScale,
+            self.bgr_black_color,
+            self.thickness,
+            cv2.LINE_AA
+        ) 
+
+    def _display_top_guess(self):
+        self.blurred_frame_with_text = self._put_text_on_blurred_frame()
+        cv2.imshow(self.window_name, self.blurred_frame_with_text)  
 
     def _main(self):
         cv2.namedWindow(self.window_name)
@@ -125,6 +147,7 @@ class Main:
                 self._capture_img()
                 self._guess_dog_breed()
                 self._blur_frame()
+                self._display_top_guess()
                 self._pause_video()
 
         self.cam.release()
