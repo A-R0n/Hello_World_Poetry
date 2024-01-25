@@ -1,4 +1,5 @@
 import cv2
+import time
 
 def main():
     Main()
@@ -7,7 +8,6 @@ class Main:
 
     def __init__(self):
         self.cam = cv2.VideoCapture(0)
-        self.img_counter = 0
         self._main()
 
     def _space_key_pressed(self) -> bool:
@@ -20,8 +20,14 @@ class Main:
             return True
         return False
     
-    def _take_picture(self):
+    def _capture_img(self):
         cv2.imwrite(self.img_name, self.frame)
+
+    def _pause_video(self):
+        cv2.waitKey(-1)
+
+    def _get_epoch_nano(self):
+        return time.time_ns()
 
     def _main(self):
         cv2.namedWindow("test")
@@ -35,10 +41,10 @@ class Main:
             if self._esc_key_pressed():
                 break
             elif self._space_key_pressed():
-                self.img_name = "opencv_frame_{}.jpg".format(self.img_counter)
-                self._take_picture()
-                print("{} written!".format(self.img_name))
-                self.img_counter += 1
+                self.epoch_nano = self._get_epoch_nano()
+                self.img_name = f'{self.epoch_nano}.jpg'
+                self._capture_img()
+                self._pause_video()
 
         self.cam.release()
 
